@@ -3,18 +3,6 @@ productName: frag
 directories:
   output: dist
   buildResources: build
-files:
-  - '!**/.vscode/**'
-  - '!src/**'
-  - '!dist/**'
-  - '!build/**'
-  - '!models/**'
-  - '!logo/**'
-  - '!electron.vite.config.{js,ts,mjs,cjs}'
-  - '!svelte.config.mjs'
-  - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
-  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
-  - '!node_modules/onnxruntime-web/**'
 extraResources:
   - from: models
     to: models
@@ -26,6 +14,20 @@ asarUnpack:
 win:
   executableName: frag
   files:
+    - '!**/.git/**'
+    - '!**/.vscode/**'
+    - '!src/**'
+    - '!dist/**'
+    - '!build/**'
+    - '!models/**'
+    - '!logo/**'
+    - '!screenshots/**'
+    - '!eu_complete_climate_guide.pdf'
+    - '!electron.vite.config.{js,ts,mjs,cjs}'
+    - '!svelte.config.mjs'
+    - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md,LICENSE}'
+    - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+    - '!node_modules/onnxruntime-web/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/darwin/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/linux/**'
     - '!node_modules/@img/*darwin*/**'
@@ -46,10 +48,26 @@ mac:
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
   notarize: false
   files:
+    - '!**/.git/**'
+    - '!**/.vscode/**'
+    - '!src/**'
+    - '!dist/**'
+    - '!build/**'
+    - '!models/**'
+    - '!logo/**'
+    - '!screenshots/**'
+    - '!eu_complete_climate_guide.pdf'
+    - '!electron.vite.config.{js,ts,mjs,cjs}'
+    - '!svelte.config.mjs'
+    - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md,LICENSE}'
+    - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+    - '!node_modules/onnxruntime-web/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/linux/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/win32/**'
     - '!node_modules/@img/*linux*/**'
+    - '!node_modules/@img/*win32*/**'
     - '!node_modules/@napi-rs/*linux*/**'
+    - '!node_modules/@napi-rs/*win32*/**'
 dmg:
   artifactName: ${name}-${version}.${ext}
 linux:
@@ -59,10 +77,26 @@ linux:
   maintainer: electronjs.org
   category: Utility
   files:
+    - '!**/.git/**'
+    - '!**/.vscode/**'
+    - '!src/**'
+    - '!dist/**'
+    - '!build/**'
+    - '!models/**'
+    - '!logo/**'
+    - '!screenshots/**'
+    - '!eu_complete_climate_guide.pdf'
+    - '!electron.vite.config.{js,ts,mjs,cjs}'
+    - '!svelte.config.mjs'
+    - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md,LICENSE}'
+    - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+    - '!node_modules/onnxruntime-web/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/darwin/**'
     - '!node_modules/onnxruntime-node/bin/napi-v3/win32/**'
     - '!node_modules/@img/*darwin*/**'
+    - '!node_modules/@img/*win32*/**'
     - '!node_modules/@napi-rs/*darwin*/**'
+    - '!node_modules/@napi-rs/*win32*/**'
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
