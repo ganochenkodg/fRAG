@@ -5,6 +5,9 @@
   "main": "./out/main/index.js",
   "author": "Dmitrii  Ganochenko",
   "homepage": "https://github.com/ganochenkodg/frag",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --write .",
     "lint": "eslint --cache .",
