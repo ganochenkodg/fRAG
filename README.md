@@ -21,7 +21,7 @@
 
 ## 🎯 Key Features
 
-- **Zero Cloud & GPU Costs:** Designed to run 100% free of charge. No paid subscriptions, cloud vector databases, or high-end GPUs required — a standard [Groq Cloud Free Tier](https://console.groq.com/) account is sufficient.
+- **Zero Cloud & GPU Costs:** Designed to run 100% free of charge. No paid subscriptions, cloud vector databases, or high-end GPUs required — a standard [Groq Free Tier](https://console.groq.com/docs/rate-limits#rate-limits) account is sufficient.
 - **Configurable Document Indexing:** Fine-tune chunk size and chunk overlap directly in the app to match the unique structure and density of your documents.
 - **Local On-Device Embeddings:** Powered by quantized `multilingual-e5-small` running locally on your CPU via Transformers.js and ONNX Runtime.
 - **Sentence-Level Multi-Query Retrieval:** Complex user inquiries are automatically split into discrete subqueries, retrieved concurrently, and deduplicated based on cosine similarity scores.
@@ -50,7 +50,7 @@ Once configured, the app presents a clean, minimalist workspace ready to accept 
 
 ### 3. Customizable Chunking Parameters
 
-Click the **configure** gear button in the header to adapt the document splitting parameters to your document layout (e.g. smaller chunks for precise clause lookups or larger chunks for holistic paragraphs).
+Click the **configure** gear button in the header to adapt the document splitting parameters to your document layout (e.g. smaller chunks `300-500` for precise clause lookups or larger chunks `1500-2000` for holistic paragraphs).
 
 <p align="center">
   <img src="screenshots/3.png" width="700" alt="Chunking Settings"/>
