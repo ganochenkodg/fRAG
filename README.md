@@ -23,12 +23,10 @@
 
 - **Zero Cloud & GPU Costs:** Designed to run 100% free of charge. No paid subscriptions, cloud vector databases, or high-end GPUs required — a standard [Groq Cloud Free Tier](https://console.groq.com/) account is sufficient.
 - **Configurable Document Indexing:** Fine-tune chunk size and chunk overlap directly in the app to match the unique structure and density of your documents.
-- **Local On-Device Embeddings:** Powered by quantized `multilingual-e5-small` running locally on your CPU via Transformers.js and ONNX Runtime. Your raw document text never leaves your machine for vectorization.
+- **Local On-Device Embeddings:** Powered by quantized `multilingual-e5-small` running locally on your CPU via Transformers.js and ONNX Runtime.
 - **Sentence-Level Multi-Query Retrieval:** Complex user inquiries are automatically split into discrete subqueries, retrieved concurrently, and deduplicated based on cosine similarity scores.
 - **Multi-Turn Conversational Memory:** Retains dialogue context across interactions using a sliding buffer window, allowing natural follow-up questions.
-- **Dual Inference Modes:** Instant toggle between **Speed** (`openai/gpt-oss-20b`) for lightning-fast responses and **Accuracy** (`openai/gpt-oss-120b`) for deep multi-document reasoning.
-- **Accurate Source Citations:** Answers are anchored strictly to retrieved document excerpts, concluding with explicit page citations (e.g. `Source: page 12`).
-- **Native Desktop Experience:** Crafted with Electron and Svelte 5 with a clean warm paper aesthetic and drag-and-drop PDF ingestion.
+- **Dual Inference Modes:** Instant toggle between **Speed** (`openai/gpt-oss-20b`) for lightning-fast responses and **Accuracy** (`openai/gpt-oss-120b`) for deep reasoning.
 
 ---
 
