@@ -15,16 +15,23 @@ files:
   - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
   - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
   - '!node_modules/onnxruntime-web/**'
-  - '!node_modules/onnxruntime-node/bin/napi-v3/linux/**'
-  - '!node_modules/onnxruntime-node/bin/napi-v3/win32/**'
 extraResources:
   - from: models
     to: models
 asarUnpack:
   - resources/**
   - '**/*.dylib'
+  - '**/*.so*'
+  - '**/*.dll'
 win:
   executableName: frag
+  files:
+    - '!node_modules/onnxruntime-node/bin/napi-v3/darwin/**'
+    - '!node_modules/onnxruntime-node/bin/napi-v3/linux/**'
+    - '!node_modules/@img/*darwin*/**'
+    - '!node_modules/@img/*linux*/**'
+    - '!node_modules/@napi-rs/*darwin*/**'
+    - '!node_modules/@napi-rs/*linux*/**'
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
@@ -38,15 +45,24 @@ mac:
     - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
   notarize: false
+  files:
+    - '!node_modules/onnxruntime-node/bin/napi-v3/linux/**'
+    - '!node_modules/onnxruntime-node/bin/napi-v3/win32/**'
+    - '!node_modules/@img/*linux*/**'
+    - '!node_modules/@napi-rs/*linux*/**'
 dmg:
   artifactName: ${name}-${version}.${ext}
 linux:
   target:
     - AppImage
-    - snap
-    - deb
+  syncDesktopName: true
   maintainer: electronjs.org
   category: Utility
+  files:
+    - '!node_modules/onnxruntime-node/bin/napi-v3/darwin/**'
+    - '!node_modules/onnxruntime-node/bin/napi-v3/win32/**'
+    - '!node_modules/@img/*darwin*/**'
+    - '!node_modules/@napi-rs/*darwin*/**'
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false

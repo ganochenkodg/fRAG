@@ -2,7 +2,7 @@
   <img src="logo/logo.png" width="180" alt="fRAG Logo"/>
 </p>
 
-<h2 align="center">fRAG — Free Desktop Retrieval-Augmented Generation</h2>
+<h2 align="center">fRAG — Free Retrieval-Augmented Generation application for Mac, Linux and Windows</h2>
 
 <p align="center">
   <strong>Fast, private, and customizable desktop RAG application powered by local CPU embeddings and Groq Cloud LLM — no GPU or paid services required.</strong>
