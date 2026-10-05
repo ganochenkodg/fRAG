@@ -86,14 +86,22 @@ Execute questions ranging from straightforward factual inquiries to complex mult
 
 ## 🛠 Tech Stack
 
-| Component               | Technology                                                                                                            | Description                                                             |
-| :---------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-| **Framework**           | [Electron](https://www.electronjs.org/) + [electron-vite](https://electron-vite.org/)                                 | Cross-platform desktop runtime and build tooling                        |
-| **Frontend**            | [Svelte 5](https://svelte.dev/)                                                                                       | High-performance reactive UI with modern runes                          |
-| **Document Processing** | [LangChain Community PDF Loader](https://js.langchain.com/)                                                           | Robust client-side PDF text extraction and recursive splitting          |
-| **Embeddings**          | [Hugging Face Transformers.js](https://huggingface.co/docs/transformers.js) + [ONNX Runtime](https://onnxruntime.ai/) | Quantized `multilingual-e5-small` running locally on CPU                |
-| **Vector Store**        | [LangChain MemoryVectorStore](https://js.langchain.com/)                                                              | In-memory cosine similarity indexing                                    |
-| **LLM Inference**       | [Groq Cloud API](https://groq.com/)                                                                                   | Ultra-fast LPU inference (`openai/gpt-oss-120b` & `openai/gpt-oss-20b`) |
+| Component               | Technology                                   | Description                                                             |
+| :---------------------- | :------------------------------------------- | :---------------------------------------------------------------------- |
+| **Framework**           | [Electron][electron] + [electron-vite][vite] | Cross-platform desktop runtime and build tooling                        |
+| **Frontend**            | [Svelte 5][svelte]                           | High-performance reactive UI with modern runes                          |
+| **Document Processing** | [LangChain PDF Loader][langchain]            | Robust client-side PDF text extraction and recursive splitting          |
+| **Embeddings**          | [Transformers.js][hf] + [ONNX Runtime][onnx] | Quantized `multilingual-e5-small` running locally on CPU                |
+| **Vector Store**        | [LangChain MemoryVectorStore][langchain]     | In-memory cosine similarity indexing                                    |
+| **LLM Inference**       | [Groq Cloud API][groq]                       | Ultra-fast LPU inference (`openai/gpt-oss-120b` & `openai/gpt-oss-20b`) |
+
+[electron]: https://www.electronjs.org/
+[vite]: https://electron-vite.org/
+[svelte]: https://svelte.dev/
+[langchain]: https://js.langchain.com/
+[hf]: https://huggingface.co/docs/transformers.js
+[onnx]: https://onnxruntime.ai/
+[groq]: https://groq.com/
 
 ---
 
