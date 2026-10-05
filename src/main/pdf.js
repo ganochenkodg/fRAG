@@ -48,15 +48,3 @@ export async function splitPdf(filePath, options = {}) {
     chunks
   }
 }
-
-// Loads a PDF and splits it into chunks in a single call.
-export async function loadAndSplitPdf(filePath, options = {}) {
-  const readResult = await readPdf(filePath)
-  const splitResult = await splitPdf(filePath, options)
-
-  return {
-    ...readResult,
-    chunksCount: splitResult.chunksCount,
-    chunks: splitResult.chunks
-  }
-}

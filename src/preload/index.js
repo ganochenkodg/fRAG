@@ -8,7 +8,6 @@ const api = {
   indexChunks: (chunks) => ipcRenderer.invoke('vector:index-chunks', chunks),
   searchChunks: (query, limit, minScore) =>
     ipcRenderer.invoke('vector:search', query, limit, minScore),
-  selectAndProcessPdf: () => ipcRenderer.invoke('pdf:select-and-process'),
   setLlmModel: (model) => ipcRenderer.send('llm:set-model', model),
   getApiKey: () => ipcRenderer.invoke('api-key:get'),
   saveApiKey: (key) => ipcRenderer.invoke('api-key:save', key),

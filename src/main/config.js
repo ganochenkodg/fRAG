@@ -13,21 +13,12 @@ export function getCurrentApiKey() {
 }
 
 export async function loadApiKey() {
-  const filePath = getApiKeyPath()
   try {
-    const data = await fs.readFile(filePath, 'utf-8')
-    const trimmed = data.trim()
-    if (trimmed) {
-      apiKey = trimmed
-      global.apiKey = trimmed
-      return trimmed
-    }
+    apiKey = (await fs.readFile(getApiKeyPath(), 'utf-8')).trim()
   } catch {
-    // File not found or unreadable
+    apiKey = ''
   }
-  apiKey = ''
-  global.apiKey = ''
-  return ''
+  return apiKey
 }
 
 export async function saveApiKey(newKey) {
@@ -37,12 +28,9 @@ export async function saveApiKey(newKey) {
   }
 
   const filePath = getApiKeyPath()
-  const dirPath = path.dirname(filePath)
-
-  await fs.mkdir(dirPath, { recursive: true })
+  await fs.mkdir(path.dirname(filePath), { recursive: true })
   await fs.writeFile(filePath, keyToSave, { encoding: 'utf-8', mode: 0o600 })
 
   apiKey = keyToSave
-  global.apiKey = keyToSave
   return apiKey
 }

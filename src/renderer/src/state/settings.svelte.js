@@ -22,7 +22,6 @@ class SettingsState {
     if (newMode !== 'speed' && newMode !== 'accuracy') return
     this.mode = newMode
     if (typeof window !== 'undefined') {
-      window.llmModel = this.llmModel
       window.api?.setLlmModel?.(this.llmModel)
     }
   }
@@ -41,8 +40,7 @@ class SettingsState {
 
 export const settings = new SettingsState()
 
-// Initialize global variable
+// Sync initial model with main process
 if (typeof window !== 'undefined') {
-  window.llmModel = settings.llmModel
   window.api?.setLlmModel?.(settings.llmModel)
 }

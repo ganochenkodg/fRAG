@@ -2,16 +2,12 @@ import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { loadAndSplitPdf, readPdf, splitPdf } from './pdf'
+import { readPdf, splitPdf } from './pdf'
 import { indexChunks, searchChunks, clearVectorStore } from './vectorStore'
 import { loadApiKey, saveApiKey, getCurrentApiKey } from './config'
 import { askGroq, clearMemory } from './groq'
 
 let currentLlmModel = 'openai/gpt-oss-120b'
-
-export function getCurrentLlmModel() {
-  return currentLlmModel
-}
 
 function createWindow() {
   // Create the browser window.
@@ -69,24 +65,6 @@ app.whenReady().then(async () => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
-
-  ipcMain.handle('pdf:select-and-process', async () => {
-    const focusedWindow = BrowserWindow.getFocusedWindow()
-    const { canceled, filePaths } = await dialog.showOpenDialog(focusedWindow, {
-      title: 'Select PDF file',
-      properties: ['openFile'],
-      filters: [{ name: 'PDF Documents', extensions: ['pdf'] }]
-    })
-
-    if (canceled || filePaths.length === 0) {
-      return null
-    }
-
-    return await loadAndSplitPdf(filePaths[0])
-  })
-
   ipcMain.handle('pdf:select-and-read', async () => {
     const focusedWindow = BrowserWindow.getFocusedWindow()
     const { canceled, filePaths } = await dialog.showOpenDialog(focusedWindow, {
@@ -95,43 +73,24 @@ app.whenReady().then(async () => {
       filters: [{ name: 'PDF Documents', extensions: ['pdf'] }]
     })
 
-    if (canceled || filePaths.length === 0) {
-      return null
-    }
-
-    return await readPdf(filePaths[0])
+    if (canceled || filePaths.length === 0) return null
+    return readPdf(filePaths[0])
   })
 
-  ipcMain.handle('pdf:split', async (_, filePath, options) => {
-    return await splitPdf(filePath, options)
-  })
-
-  ipcMain.handle('vector:index-chunks', async (_, chunks) => {
-    return await indexChunks(chunks)
-  })
-
-  ipcMain.handle('vector:search', async (_, query, limit, minScore) => {
-    return await searchChunks(query, limit, minScore)
-  })
-
+  ipcMain.handle('pdf:split', (_, filePath, options) => splitPdf(filePath, options))
+  ipcMain.handle('vector:index-chunks', (_, chunks) => indexChunks(chunks))
+  ipcMain.handle('vector:search', (_, query, limit, minScore) =>
+    searchChunks(query, limit, minScore)
+  )
   ipcMain.on('llm:set-model', (_, model) => {
     currentLlmModel = model
   })
-
   ipcMain.handle('llm:get-model', () => currentLlmModel)
-
-  ipcMain.handle('api-key:get', () => {
-    return getCurrentApiKey()
-  })
-
-  ipcMain.handle('api-key:save', async (_, key) => {
-    return await saveApiKey(key)
-  })
-
-  ipcMain.handle('llm:ask', async (_, query, chunks) => {
-    return await askGroq({ query, chunks, model: currentLlmModel })
-  })
-
+  ipcMain.handle('api-key:get', () => getCurrentApiKey())
+  ipcMain.handle('api-key:save', (_, key) => saveApiKey(key))
+  ipcMain.handle('llm:ask', (_, query, chunks) =>
+    askGroq({ query, chunks, model: currentLlmModel })
+  )
   ipcMain.handle('app:reset-session', async () => {
     clearVectorStore()
     await clearMemory()
